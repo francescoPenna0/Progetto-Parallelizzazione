@@ -1,6 +1,6 @@
 !PER PARALLELIZZARE USA SEMPRE L'ESTENSIONE .F90, NON .f90!
-!LINEA DI COMPILAZIONE PER IL CODICE SEQUENZIALE: gfortran pi.F90 -fopenmp -DSEQUENCIAL
-!LINEA DI COMPILAZIONE PER IL CODICE PARALLELO: gfortran pi.F90 -fopenmp -D_PARALLEL
+!LINEA DI COMPILAZIONE PER IL CODICE SEQUENZIALE: gfortran parallelPi.F90 -fopenmp -DSEQUENCIAL
+!LINEA DI COMPILAZIONE PER IL CODICE PARALLELO: gfortran parallelPi.F90 -fopenmp -DPARALLEL_VERSION
 program pigreco
     !----------------------------------------!
     use OMP_LIB
@@ -31,7 +31,7 @@ program pigreco
         totale = totale + f
     enddo
     !
-#elif _PARALLEL
+#elif PARALLEL_VERSION
     !
     print '(a)', "Scelta la versione parallela."
     !
